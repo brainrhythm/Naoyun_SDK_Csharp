@@ -3,16 +3,39 @@
 > Windows C#
 
 ---
+## Note on Use Cases
 
-## Purchase SDK
+Because this product utilizes BLE data transmission, it is not suitable for ERP (Event-Related Potential) experiments that require high real-time synchronization.
 
-To obtain your AppID and Secret, contact: contact@brainrhythm.cn or support@veetra.ai
+## Purchasing SDK
 
-### Sample Description
+Get appID and Secret, contact: contact@brainrhythm.cn or support@veetra.ai.
+
+Download samples: https://github.com/brainrhythm, currently available in Python and C# versions.
+
+Python SDK version download link: https://github.com/brainrhythm/Naoyun_SDK_Python
+
+C# SDK version download link: https://github.com/brainrhythm/Naoyun_SDK_Csharp
+
+Verify the order, and we will send the appID and Secret via email.
+
+
+## Frequently Asked Questions
+
+If the device cannot be found during scanning, troubleshoot as follows:
+- Make sure the headset is turned on, or put it back into the charging case and take it out 3 seconds after the light turns on;
+- Check whether the PC/laptop's Bluetooth supports BLE functionality;
+- Check whether the headset's BLE is already connected to another device; kill the Naoyun/Veetra app on the phone from the background and then search again.
+  
+For the Python version, ensure that the library files and naoyundemo.py are in the same directory. Run the command in the directory where naoyundemo.py is located, 
+- for example: python naoyundemo.py ak_xxxxxx sk_xxxxxx
+
+
+## Sample Description
 
 Recommended minimum version: Visual Studio 2022 with .NET Framework 4.7.2
 
-### C# SDK Main Components
+## C# SDK Main Components
 
 - `NaoyunSdk.dll` — Encapsulates Bluetooth protocols and server authentication protocols
 - `libmath.dll` — Encapsulates the algorithm library
@@ -95,7 +118,7 @@ public class BleDeviceInfo
 };
 ```
 
-### Stop Scanning
+## Stop Scanning
 
 ```csharp
 _sdkApi.StopBleScanAsync();
@@ -121,7 +144,7 @@ Feedback on current connection state when BLE device connects or disconnects:
 - Connected: `Connected to {device.name}`
 - Disconnected: `Disconnected from {device.name}`
 
-### Disconnect
+## Disconnect
 
 ```csharp
 await _sdkApi.DisconnectAsync();
@@ -181,7 +204,7 @@ public class DeviceStatusNotificationEventArgs : EventArgs
 }
 ```
 
-### Noise Reduction Mode
+## Noise Reduction Mode
 
 ```csharp
 bool success = await _sdkApi.SetNoiseReductionModeAsync(0);
@@ -194,7 +217,7 @@ Set whether to enable noise reduction or ambient sound mode.
 - `1` — Noise reduction mode
 - `2` — Ambient sound
 
-### Touch Control
+## Touch Control
 
 ```csharp
 bool success = await _sdkApi.SetTouchEnabledAsync(true);
@@ -206,7 +229,7 @@ Set whether touch control is enabled.
 - `true` — On
 - `false` — Off
 
-### Smart Playback
+## Smart Playback
 
 ```csharp
 bool success = await _sdkApi.SetAutoPlayEnabledAsync(true);
@@ -261,7 +284,7 @@ public class DataReceivedEventArgs : EventArgs
 }
 ```
 
-### Get Latest 1–60 Seconds of EEG Data
+## Get Latest 1–60 Seconds of EEG Data
 
 ```csharp
 float[] leftData = _sdkApi.GetLatestEegData(EarSide.Left, _displaySeconds, _useFilteredData);
