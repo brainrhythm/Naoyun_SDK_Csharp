@@ -23,7 +23,7 @@ Verify the order, and we will send the appID and Secret via email.
 ## Frequently Asked Questions
 
 If the device cannot be found during scanning, troubleshoot as follows:
-- Make sure the headset is turned on, or put it back into the charging case and take it out 3 seconds after the light turns on;
+- Make sure the headset is turned on, or put it back into the charging case and take it out 3 seconds after;
 - Check whether the PC/laptop's Bluetooth supports BLE functionality;
 - Check whether the headset's BLE is already connected to another device; kill the Naoyun/Veetra app on the phone from the background and then search again.
   
